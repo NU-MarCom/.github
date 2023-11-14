@@ -1,0 +1,24 @@
+name: WP Engine Deployment
+
+on:
+  push:
+    branches: [ main, staging ]
+  pull_request:
+    branches: [ develop ]
+  workflow_dispatch:
+
+jobs:
+  deployment:
+    uses: NU-MarCom/github-actions-templates/.github/workflows/wpengine-deployment.yml@main
+    secrets: inherit
+    with:
+      WPE_ENV: ${{ vars.WPE_ENV }}
+      PRD_ENV: ${{ vars.PRD_ENV }}
+      STG_ENV: ${{ vars.STG_ENV }}
+      DEV_ENV: ${{ vars.DEV_ENV }}
+      # Deploy Options
+      SRC_PATH: ${{ vars.SRC_PATH }}
+      REMOTE_PATH: ${{ vars.REMOTE_PATH }}
+      RSYNC_EXCLUDE: ${{ vars.RSYNC_EXCLUDE }}
+      PHP_LINT: TRUE
+      CACHE_CLEAR: TRUE

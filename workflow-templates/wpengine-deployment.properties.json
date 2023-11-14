@@ -1,0 +1,8 @@
+{
+    "name": "NU EA MarCom - WP Engine CI/CD Workflow",
+    "description": "External Affairs Marketing Communications Organization WP Engine Starter Workflow.",
+    "iconName": "wpengine-icon",
+    "categories": [
+        "deployment"
+    ]
+}
