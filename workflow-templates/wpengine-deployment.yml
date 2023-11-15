@@ -2,19 +2,44 @@ name: WP Engine Deployment
 
 on:
   push:
-    branches: [ main, staging ]
+    branches: [ main, staging, develop ]
   pull_request:
     branches: [ develop ]
   workflow_dispatch:
 
 jobs:
-  deployment:
+  production:
+    environment: production
     uses: NU-MarCom/github-actions-templates/.github/workflows/wpengine-deployment.yml@main
     secrets: inherit
     with:
-      WPE_ENV: ${{ vars.WPE_ENV }}
+      ENVIRONMENT_URL: ${{ vars.ENVIRONMENT_URL }}
       PRD_ENV: ${{ vars.PRD_ENV }}
+      # Deploy Options
+      SRC_PATH: ${{ vars.SRC_PATH }}
+      REMOTE_PATH: ${{ vars.REMOTE_PATH }}
+      RSYNC_EXCLUDE: ${{ vars.RSYNC_EXCLUDE }}
+      PHP_LINT: TRUE
+      CACHE_CLEAR: TRUE
+  staging:
+    environment: staging
+    uses: NU-MarCom/github-actions-templates/.github/workflows/wpengine-deployment.yml@main
+    secrets: inherit
+    with:
+      ENVIRONMENT_URL: ${{ vars.ENVIRONMENT_URL }}
       STG_ENV: ${{ vars.STG_ENV }}
+      # Deploy Options
+      SRC_PATH: ${{ vars.SRC_PATH }}
+      REMOTE_PATH: ${{ vars.REMOTE_PATH }}
+      RSYNC_EXCLUDE: ${{ vars.RSYNC_EXCLUDE }}
+      PHP_LINT: TRUE
+      CACHE_CLEAR: TRUE
+  development:
+    environment: development
+    uses: NU-MarCom/github-actions-templates/.github/workflows/wpengine-deployment.yml@main
+    secrets: inherit
+    with:
+      ENVIRONMENT_URL: ${{ vars.ENVIRONMENT_URL }}
       DEV_ENV: ${{ vars.DEV_ENV }}
       # Deploy Options
       SRC_PATH: ${{ vars.SRC_PATH }}
