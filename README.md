@@ -1,4 +1,6 @@
-# External Affairs Marketing Communications team
+# Northeastern University External Affairs
+## Marketing Communications Team
+- [https://brand.northeastern.edu/](https://brand.northeastern.edu/)
 
 This organization contains repositories for the following projects:
 - NU Start Framework (Parent and Child Themes)
